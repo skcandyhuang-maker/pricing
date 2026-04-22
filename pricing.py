@@ -119,7 +119,7 @@ with col1:
     st.plotly_chart(fig, use_container_width=True)
 
 with col2:
-    st.subheader("💡 銷售話術建議")
+    st.subheader("建議")
     best_option = df.loc[df["總計"].idxmin(), "服務商"]
     if enable_ddos:
         st.success(f"**目前防禦優先模式下：**\nSkyCloud 的固定年費優勢極大。公有雲 (AWS/GCP/Azure) 因為需要額外支付每個月近 10 萬台幣的 DDoS 訂閱費，導致總持有成本飆升。")
