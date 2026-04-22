@@ -3,13 +3,13 @@ import pandas as pd
 import plotly.graph_objects as go
 
 # --- 頁面配置 ---
-st.set_page_config(page_title="SkyCloud 終極費用對比工具", layout="wide")
+st.set_page_config(page_title="SkyCloud 費用對比工具", layout="wide")
 
-st.title("🛡️ 終極版：SkyCloud vs 全通路 CDN/WAF 競品試算")
+st.title("SkyCloud vs 通路 CDN/WAF 競品試算 v1")
 st.markdown("針對 FAE 與業務設計，快速比對包含 DDoS、WAF 及流量的綜合持有成本。")
 
 # --- 側邊欄：動態參數輸入 ---
-st.sidebar.header("📊 客戶需求參數")
+st.sidebar.header(" 客戶需求參數")
 traffic_gb = st.sidebar.number_input("每月預估流量 (GB)", min_value=0, value=3000, step=500)
 request_m = st.sidebar.number_input("每月請求數 (M/百萬次)", min_value=0, value=10, step=1)
 waf_rules = st.sidebar.number_input("WAF 規則配置數量", min_value=1, value=5)
@@ -127,11 +127,11 @@ with col2:
         st.warning(f"**目前基礎模式下：**\n雖然某些公有雲看似便宜，但別忘了他們不包含 Tbps 級的攻擊防禦與 WAF 規則上限，一旦遭遇攻擊，費用將無法控管。")
 
 # 數據明細表
-st.subheader("📋 費用細項對照表 (NTD)")
+st.subheader(" 費用細項對照表 (NTD)")
 st.dataframe(df.style.format("{:,.0f}", subset=["基礎固定費", "流量費用", "WAF/請求費", "進階DDoS費", "總計"]), use_container_width=True)
 
 # 功能矩陣對比
-st.subheader("🛡️ 功能規格對比")
+st.subheader(" 功能規格對比")
 matrix = {
     "項目": ["Tbps 級 DDoS 防護", "WAF 規則上限", "免費 SSL 憑證額度", "日誌推送 (S3)", "技術支援"],
     "SkyCloud": ["✅ 內建 (無上限)", "✅ 25 組域名內建", "✅ 25 張", "✅ 支援", "✅ FAE 在地支援"],
